@@ -1,0 +1,49 @@
+# Laravel 11 .gitignore
+
+# Ignore the .env file for sensitive environment variables
+.env
+
+# Ignore the vendor directory (Composer dependencies)
+/vendor
+
+# Ignore the node_modules directory (npm/yarn dependencies)
+node_modules
+
+# Ignore compiled class files
+/storage/*.key
+/storage/framework/*
+/storage/logs/*
+
+# Ignore IDE and editor files
+/.idea
+/.vscode
+/.phpunit.result.cache
+/.env.local
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore the public storage directory, used for uploaded files
+/public/storage
+
+# Ignore compiled and cached files
+/bootstrap/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/cache/*
+
+# Ignore environment specific files
+.env.*
+
+# Ignore Docker-related files if you are using Docker
+docker-compose.yml
+Dockerfile
+.docker/
+
+# Ignore composer and npm lock files if you want to ignore those versions
+/composer.lock
+/package-lock.json
+
+/storage/
+/public/storage/
