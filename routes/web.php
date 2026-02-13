@@ -136,17 +136,18 @@ Route::middleware(['checkRole:2,3'])->prefix("operatore")->group(function () {
         return response()->download($path);
     })->name('download.pdf');
 
-Route::get('/notifiche', [HomeController::class, 'comunicazioni'])->name('notifiche.index');
-    //
+ Route::get('/notifiche', [HomeController::class, 'comunicazioni'])->name('notifiche.index');
  Route::get('/utentiValidati', [App\Http\Controllers\AdminController::class, 'utentiValidati'])->name('admin.utentiValidati');
-    //
+ 
 });
 
 /*******************Admin*************************** */
 
-Route::middleware(['checkRole:3'])->prefix("admin")->group(function () {
+Route::middleware(['checkRole:2,3'])->prefix("admin")->group(function () {
     Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/valida/{idUser}', [App\Http\Controllers\AdminController::class, 'validazione'])->name('admin.valida');
+Route::get('/aggiornaDatiPaziente/{id}', [AdminController::class, 'aggiornaDatiPaziente'])->name('admin.aggiornaDatiPaziente');
+ Route::post('/admin/aggiorna/{id}', [AdminController::class, 'aggiornaDati'])->name('admin.aggiornaDati');
    
     Route::get('/flusso', [App\Http\Controllers\AdminController::class, 'flussoView'])->name('admin.flussoView');
     Route::get('/esportaFlusso', [App\Http\Controllers\AdminController::class, 'estraiDatiFlusso'])->name('admin.estraiDatiFlusso');
@@ -154,8 +155,7 @@ Route::middleware(['checkRole:3'])->prefix("admin")->group(function () {
     Route::get('/ets', [App\Http\Controllers\AdminController::class, 'etsView'])->name('admin.etsView');
     Route::get('/esportaFlussoETS', [App\Http\Controllers\AdminController::class, 'estraiDatiEts'])->name('admin.estraiDatiEts');
     Route::get('scaricaETS', [App\Http\Controllers\AdminController::class, 'scaricaETS'])->name('admin.scaricaETS');
-    Route::get('/aggiornaDatiPaziente/{id}', [AdminController::class, 'aggiornaDatiPaziente'])->name('admin.aggiornaDatiPaziente');
-    Route::post('/admin/aggiorna/{id}', [AdminController::class, 'aggiornaDati'])->name('admin.aggiornaDati');
+   
 
     Route::get('/grafici', [App\Http\Controllers\AdminController::class, 'indexGrafici'])->name('operatore.grafici');
 
